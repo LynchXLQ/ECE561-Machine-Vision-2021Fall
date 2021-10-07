@@ -55,12 +55,12 @@ T = UE(:,3);   % Transistion matrix
 P2 = [R, T];
 P1 = [eye(3) zeros(3,1)];  % World coordinate system is centered at 1st camera pinhole
 %%
-%Get 3D Data using Direct Linear Transform(Linear Triangular method)
+% Linear Triangular method
 inX = [m1(1,:)' m2(1,:)'];
-Xw = Triangulation(m1',K*P1, m2',K*P2);
-xxx=Xw(1,:);
-yyy=Xw(2,:);
-zzz=Xw(3,:);
+TR = Triangulation(m1',K*P1, m2',K*P2);
+xxx=TR(1,:);
+yyy=TR(2,:);
+zzz=TR(3,:);
 
 figure(1);
 plot3(xxx, yyy, zzz, 'R+');
